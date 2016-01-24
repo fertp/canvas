@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas - Particula rebota</title>
+	<script>
+
+	window.onload = function() {
+
+		var canvas = document.createElement('canvas');
+			c = canvas.getContext('2d');
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		document.body.appendChild(canvas);
+
+
+		var posX = canvas.width / 10,
+			posY = canvas.height / 2,
+			vx = 5,
+			vy = -10,
+			gravedad = 1;
+
+		setInterval(function(){
+
+			c.fillStyle = "black";
+			c.fillRect(0,0, canvas.width,canvas.height);
+
+			posX += vx;
+			posY += vy;
+
+			if(posY > canvas.height*0.75) {
+				vy *= -0.5;
+				vx *= 0.5;
+				posY = canvas.height*0.75;
+			}
+
+			vy += gravedad;
+
+			c.fillStyle = "white";
+			c.fillRect(posX,posY, 10,10);
+
+		}, 30);
+
+	};
+
+	</script>
+	<style>
+
+		body, html { margin: 0; padding: 0; overflow: hidden }
+
+	</style>
+</head>
+<body>
+	
+</body>
+</html>
